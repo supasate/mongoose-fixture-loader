@@ -2,34 +2,36 @@
 
 A promise fixture loader for Mongoose.
 
-1) Load a single object
+1. Load a single object
 
-``` javascript
-loadFixture(UserModel, userObject);
-```
+    ``` javascript
+    loadFixture(UserModel, userObject);
+    ```
 
-2) Load an array of objects
-``` javascript
-loadFixture(UserModel, arrayOfUserObjects);
-```
+2. Load an array of objects
 
-3) Load a sequence of objects
+    ``` javascript
+    loadFixture(UserModel, arrayOfUserObjects);
+    ```
 
-``` javascript
-loadFixture(UserModel, userObject)
-  .then((userInstance) => {
-    loadFixture(BookModel, bookObjectRelatedToUserObject)
-  });
-```
+3. Load a sequence of objects
 
-4) Load objects in parallel
-``` javascript
-Promise.all([
-  loadFixture(UserModel, userObject),
-  loadFixture(CatModel, catObject),
-  loadFixture(DogModel, dogObject)
-]);
-```
+    ``` javascript
+    loadFixture(UserModel, userObject)
+      .then((userInstance) => {
+        loadFixture(BookModel, bookObjectRelatedToUserObject)
+      });
+    ```
+
+4. Load objects in parallel
+
+    ``` javascript
+    Promise.all([
+      loadFixture(UserModel, userObject),
+      loadFixture(CatModel, catObject),
+      loadFixture(DogModel, dogObject)
+    ]);
+    ```
 
 ## Installation
 
@@ -39,65 +41,66 @@ Promise.all([
 
 1. Assume you have a user model file `src/models/user-model.js` as the following.
 
-``` javascript
-const mongoose = require('mongoose');
+    ``` javascript
+    const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: {type: String, required: true },
-  email: { type: String },
-  created: { type: Date, default: Date.now }
-});
+    const UserSchema = new mongoose.Schema({
+      firstName: { type: String, required: true },
+      lastName: {type: String, required: true },
+      email: { type: String },
+      created: { type: Date, default: Date.now }
+    });
 
-module.exports = mongoose.model('User', UserSchema);
-```
+    module.exports = mongoose.model('User', UserSchema);
+    ```
 
 2. Create a fixture file `test/fixtures/user.js` to export a JSON object,
 
-``` javascript
-module.exports = {
-  firstName: 'John',
-  lastName: 'Doe',
-  email: 'john.doe@test.com'
-};
-```
+    ``` javascript
+    module.exports = {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@test.com'
+    };
+    ```
 
-or an array of JSON object.
+    or an array of JSON object.
 
-``` javascript
-module.exports = [
-  {
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john.doe@test.com'
-  },
-  {
-    firstName: 'Alice',
-    lastName: 'Bob',
-    email: 'alice.bob@test.com'
-  }
-];
-```
+    ``` javascript
+    module.exports = [
+      {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@test.com'
+      },
+      {
+        firstName: 'Alice',
+        lastName: 'Bob',
+        email: 'alice.bob@test.com'
+      }
+    ];
+    ```
 
 3. In your test file `test/index-test.js`, load the fixture into MongoDB.
 
-``` javascript
-const loadFixture = require('mongoose-fixture-loader');
-const UserModel = require('../src/models/user-model.js');
-const user = require('./fixtures/user.js');
+    ``` javascript
+    const loadFixture = require('mongoose-fixture-loader');
+    const UserModel = require('../src/models/user-model.js');
+    const user = require('./fixtures/user.js');
 
-describe('a test suite', () => {
-  before((done) => {
-    loadFixture(UserModel, user)
-      .then((userInst) => {
-        done();
-      })
-      .catch((err) => {
-        done(err);
+    describe('a test suite', () => {
+      before((done) => {
+        loadFixture(UserModel, user)
+          .then((userInst) => {
+            done();
+          })
+          .catch((err) => {
+            done(err);
+          });
       });
-  });
-});
-```
+    });
+    ```
+
 4. Enjoy testing!
 
 ## Contributing
