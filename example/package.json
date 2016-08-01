@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "An example of mongoose-fixture-loader",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Supasate Choochaisri (supasate.c@gmail.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.0",
+    "mongoose": "^4.5.7",
+    "mongoose-fixture-loader": "^1.0.0"
+  }
+}
