@@ -1,24 +1,29 @@
 var loadFixture = function(ModelClass, data) {
   return new Promise((resolve, reject) => {
     if (Array.isArray(data)) {
-      let results = [];
+      // Load array of json objects
+      let promises = [];
 
       data.forEach((json) => {
-        (new ModelClass(json)).save((err, inst) => {
-          if (err) reject(err);
+        promises.push((new ModelClass(json)).save());
+      });
 
-          results.push(inst);
+      Promise.all(promises)
+        .then((results) => {
+          resolve(results);
+        })
+        .catch((err) => {
+          reject(err);
         });
-
-        resolve(results);
-      });
     } else {
-      // Load single json data
-      (new ModelClass(data)).save((err, inst) => {
-        if (err) reject(err);
-
-        resolve(inst);
-      });
+      // Load single json object
+      (new ModelClass(data)).save()
+        .then((inst) => {
+          resolve(inst);
+        })
+        .catch((err) => {
+          reject(err);
+        });
     }
   });
 };
