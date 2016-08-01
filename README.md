@@ -1,5 +1,7 @@
 # Mongoose Fixture Loader
 
+[![Build Status](https://travis-ci.org/supasate/mongoose-fixture-loader.svg?branch=master)](https://travis-ci.org/supasate/mongoose-fixture-loader)
+
 A promise fixture loader for Mongoose.
 
 1. Load a single object
