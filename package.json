@@ -1,6 +1,6 @@
 {
   "name": "mongoose-fixture-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple fixture loader for Mongoose",
   "main": "src/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "test",
     "fixture loader"
   ],
-  "author": "Supasate Choochaisri",
+  "author": "Supasate Choochaisri (supasate.c@gmail.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/supasate/mongoose-fixture-loader/issues"
