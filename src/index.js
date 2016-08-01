@@ -2,7 +2,7 @@ var loadFixture = function(ModelClass, data) {
   return new Promise((resolve, reject) => {
     if (Array.isArray(data)) {
       // Load array of json objects
-      let promises = [];
+      const promises = [];
 
       data.forEach((json) => {
         promises.push((new ModelClass(json)).save());
