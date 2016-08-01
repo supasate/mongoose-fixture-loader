@@ -118,4 +118,4 @@ A promise fixture loader for Mongoose.
 
 Copyright (c) 2016 Supasate Choochaisri
 
-Licensed under the [Apache License](https://github.com/supasate/Interest-Rate-Parity-JS/blob/master/LICENSE).
+Licensed under the [Apache License](https://github.com/supasate/mongoose-fixture-loader/blob/master/LICENSE).
